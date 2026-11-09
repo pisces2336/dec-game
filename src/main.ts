@@ -62,7 +62,7 @@ function power() {
   const raw = machines.reduce((s,m) => s + count(m.id)*m.power, 0);
   return raw * (researchDone('cascade') ? 2.5 : 1) * (researchDone('void') ? 10 : 1) * (1 + count('lens')*.18);
 }
-function energyUse() { return machines.reduce((s,m)=>s+count(m.id)*m.energy,0)*(researchDone('efficiency')?.75:1); }
+function energyUse() { return machines.reduce((s,m)=>s+count(m.id)*m.energy,0)*(researchDone('efficiency') ? 0.75 : 1); }
 function matterUse() { return machines.reduce((s,m)=>s+count(m.id)*m.matter,0); }
 function render() {
   $('entropy').textContent = fmt(state.entropy);
